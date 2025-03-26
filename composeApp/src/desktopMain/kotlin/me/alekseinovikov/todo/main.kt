@@ -6,18 +6,21 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberWindowState
+import me.alekseinovikov.todo.properties.ApplicationProperties
 import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.WebApplicationType
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.builder.SpringApplicationBuilder
+import org.springframework.boot.context.properties.EnableConfigurationProperties
 
 @SpringBootApplication
-class EmptyApplication : CommandLineRunner {
+@EnableConfigurationProperties(ApplicationProperties::class)
+class EmptyApplication(private val applicationProperties: ApplicationProperties) : CommandLineRunner {
     @OptIn(ExperimentalMaterialApi::class)
     override fun run(vararg args: String?) = application {
         Window(
             onCloseRequest = ::exitApplication,
-            title = "todo-kotlin-compose",
+            title = applicationProperties.title,
             state = rememberWindowState(size = DpSize(1200.dp, 800.dp))
         ) {
             App()
