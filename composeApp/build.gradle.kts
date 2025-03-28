@@ -31,8 +31,12 @@ kotlin {
             implementation(compose.desktop.currentOs)
             implementation(libs.kotlinx.coroutines.swing)
             implementation("org.springframework.boot:spring-boot-starter")
+            implementation("org.springframework.boot:spring-boot-starter-data-jpa")
             implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
             implementation("org.jetbrains.kotlin:kotlin-reflect")
+            implementation("org.liquibase:liquibase-core")
+
+            runtimeOnly("com.h2database:h2")
         }
     }
 }

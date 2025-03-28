@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: alekseinovikov
+      changes:
+        - sqlFile:
+            path: changelogs/changeset-1.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
